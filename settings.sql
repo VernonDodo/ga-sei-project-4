@@ -1,0 +1,3 @@
+CREATE DATABASE catalog;
+CREATE USER cataloguser WITH PASSWORD 'catalog';
+GRANT ALL PRIVILEGES ON DATABASE catalog TO cataloguser;
