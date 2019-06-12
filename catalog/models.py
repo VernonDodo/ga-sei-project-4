@@ -13,20 +13,19 @@ class Admin(models.Model):
     lastname = models.CharField(max_length=50, blank=True)
     email = models.ForeignKey(User, on_delete=models.CASCADE, related_name='admins')
     role = models.CharField(max_length=20, default='DBAdmin', editable=False)
-    
-    def __str__(self):
-        return self.firstname
-
-class Producer(models.Model):
-    firstname = models.CharField(max_length=50, blank=True)
-    lastname = models.CharField(max_length=50, blank=True)
-    email = models.ForeignKey(User, on_delete=models.CASCADE, related_name='producers')
-    organisation = models.CharField(max_length=100, blank=False)
-    website = models.URLField(max_length=200)
+    email = models.ForeignKey(User, on_delete=models.CASCADE, related_name='admins')
 
     def __str__(self):
         return self.organisation
 
+
+class Producer(models.Model):
+    organisation = models.CharField(max_length=100, blank=False)
+    email = models.ForeignKey(User, on_delete=models.CASCADE, related_name='producers')
+    website = models.URLField(max_length=200)
+
+    def __str__(self):
+        return self.organisation
 
 
 
